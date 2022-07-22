@@ -1,6 +1,6 @@
 SONAR_SCANNER_VERSION=4.6.1.2450 # Find the latest version in the "Linux" link on this page:
                                  # https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
-SONAR_SERVER_URL="localhost:9000" # To fill in
+SONAR_SERVER_URL="http://localhost:9000"
 BW_OUTPUT=bw-output # same directory than the one set in `sonar-project.properties`
 
 curl --create-dirs -sSLo $HOME/.sonar/sonar-scanner.zip "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip"
@@ -13,6 +13,6 @@ export PATH=$HOME/.sonar/build-wrapper-linux-x86:$PATH
 
 autoreconf --install
 ./configure
-build-wrapper --out-dir $BW_OUTPUT make clean all
+build-wrapper-linux-x86-64 --out-dir $BW_OUTPUT make clean all
 
 sonar-scanner
